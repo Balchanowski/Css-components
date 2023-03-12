@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #677676;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      .container {
+        height: 9rem;
+        width: 10rem;
+        background-color: #fff;
+        padding: 1.5rem;
+        margin: 50% auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        position: relative;
+        /* overflow: hidden; */
+
+        transform: translate(0, -50%);
+      }
+      .line {
+        width: 100%;
+        background-color: black;
+        height: 2rem;
+        z-index: 2;
+        border-radius: 11px;
+        transform-origin: 1rem 50%;
+        transition: all 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </body>
+  <script>
+    const line = document.querySelectorAll(".line");
+    let index = 1;
+
+    document
+      .querySelector(".container")
+      .addEventListener("click", function (e) {
+        if (index === 1) {
+          line[0].style.transform = "translate(1.2rem,1rem) rotate(45deg)";
+          line[1].style.opacity = "0";
+          line[1].style.visibility = "hidden";
+
+          line[2].style.transform = "translate(1.2rem, -.4rem) rotate(-45deg)";
+          index += 1;
+        } else if (index > 1) {
+          line[0].style.transform = "translate(0, 0) rotate(0)";
+          line[1].style.opacity = "1";
+          line[1].style.visibility = "visible";
+
+          line[2].style.transform = "translate(0,0) rotate(0)";
+          index = 1;
+        }
+      });
+  </script>
+</html>
